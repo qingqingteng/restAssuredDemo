@@ -1,4 +1,4 @@
-package apiDemo;
+package appiumDemo.apiDemo;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;

@@ -1,4 +1,4 @@
-package xueqiuDemo2;
+package appiumDemo.apiDemo;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -7,20 +7,13 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.number.OrderingComparison.greaterThan;
-import static org.hamcrest.number.OrderingComparison.lessThan;
-import static org.junit.Assert.assertThat;
 
 public class TestPageObject {
+
     private static AndroidDriver<AndroidElement> driver;
 
     @BeforeClass
@@ -29,22 +22,24 @@ public class TestPageObject {
         DesiredCapabilities capabilityies = new DesiredCapabilities();
         capabilityies.setCapability("plactformName", "Android");
         capabilityies.setCapability("deviceName", "192.168.56.101:5555");
-        capabilityies.setCapability("appPackage", "com.xueqiu.android");
-        capabilityies.setCapability("appActivity", ".view.WelcomeActivityAlias");
+        capabilityies.setCapability("appPackage", "io.appium.android.apis");
+        capabilityies.setCapability("appActivity", "io.appium.android.apis.ApiDemos");
         capabilityies.setCapability("noReset", true);
 //        capabilityies.setCapability("showChromedriverLog",true);
         driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilityies);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
-    public void  getPageObject() throws InterruptedException {
-        xueqiuDemo2.PageMain mainPage = new xueqiuDemo2.PageMain(driver);
-        mainPage.goto自选().get沪深股票();//进入沪深
-        Page股票 page股票 = mainPage.goto自选().selectStock("长安汽车");//在沪深中选择股票
-        assertThat(page股票.getName(),equalTo("长安汽车"));
-        assertThat(page股票.getPrice(),lessThan(16.36));
-
+    public void  getPageObject(){
+        MainPage mainPage = new MainPage();
+//      使用PageFactory初始化pageobject对象
+        PageFactory.initElements(new AppiumFieldDecorator(driver),mainPage);
+        ViewsPage viewsPage = mainPage.gotoViews();
+        PageFactory.initElements(new AppiumFieldDecorator(driver),viewsPage);
+        PopPage popPage = viewsPage.gotoPopupView();
+        PageFactory.initElements(new AppiumFieldDecorator(driver),popPage);
+        popPage.makePopAdd();
+//        System.out.println(popPage.getPopText());
     }
 
 
@@ -52,5 +47,6 @@ public class TestPageObject {
     public static void tearDonw(){
         driver.quit();
     }
+
 
 }
