@@ -1,0 +1,23 @@
+{
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "title":"topics",
+  "type":"object",
+  "properties":{
+    "topics": {
+      "type": "array",
+      "items":{
+        "type":"object",
+        "properties":{
+          "id":{"type":"integer"},
+          "title":{"type":"string"}
+        },
+        "required":["id","title","created_at"]
+      }
+
+    }
+
+  },
+  "required":[
+    "topics"
+  ]
+}

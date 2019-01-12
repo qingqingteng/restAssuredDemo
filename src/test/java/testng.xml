@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!--<suite name="Suite1">-->
+    <!--按顺序执行测试方法-->
+    <!--<test name="test1" preserve-order="true">-->
+        <!--<classes>-->
+            <!--<class name="TestNGDemo">-->
+                <!--<methods>-->
+                    <!--<include name="abc1"></include>-->
+                    <!--<include name="abc"></include>-->
+                <!--</methods>-->
+
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
+
+
+    <!--分组执行-->
+    <!--<test name="test2">-->
+        <!--<groups>-->
+            <!--<run>-->
+                <!--<include name="groups2"></include>-->
+            <!--</run>-->
+        <!--</groups>-->
+        <!--<classes>-->
+            <!--<class name="TestNGDemo"></class>-->
+        <!--</classes>-->
+    <!--</test>-->
+
+
+    <!--<参数化>-->
+<!--<parameter name="username" value="xxxxxx111222333">-->
+    <!--<test name="test3">-->
+        <!--<classes>-->
+            <!--<class name="TestNGDemo">-->
+                <!--<methods>-->
+                    <!--<include name="functionParameter"></include>-->
+                <!--</methods>-->
+
+            <!--</class>-->
+        <!--</classes>-->
+    <!--</test>-->
+<!--</parameter>-->
+
+
+<!--</suite>-->
+
+<!--<开启多线程，可以跑多个class和method,如parallel="classes",parallel="methods">-->
+<suite name="Suite2" parallel="methods" thread-count="2">
+    <test name="test4">
+        <classes>
+            <class name="TestNGDemo">
+            </class>
+        </classes>
+    </test>
+</suite>
+
